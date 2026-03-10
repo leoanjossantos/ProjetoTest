@@ -18,8 +18,53 @@ A cross-platform mobile application for collecting and organizing supermarket pr
 - **Node.js** (LTS version 18 or higher)
 - **npm** or **yarn** (npm comes with Node.js)
 - **Xcode** (for iOS development) - Available on Mac App Store
-- **CocoaPods** (`sudo gem install cocoapods`)
+- **Ruby** (version 3.0+ required for CocoaPods)
+- **CocoaPods**
 - **Watchman** (`brew install watchman`)
+
+### Installing Ruby 3.x (macOS M3)
+
+The system Ruby on macOS M3 is too old (2.6.x). Install Ruby 3.x using Homebrew:
+
+```bash
+# Install Homebrew if not installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Ruby 3.3 (latest maintained version)
+brew install ruby@3.3
+
+# Add to PATH (add this to ~/.zshrc)
+export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+
+# Reload shell
+source ~/.zshrc
+
+# Verify Ruby version
+ruby -v
+
+# Install CocoaPods with the new Ruby
+gem install ffi -v 1.17.3
+gem install cocoapods
+```
+
+**Alternative**: If ruby@3.3 is also unavailable, use rbenv:
+
+```bash
+# Install rbenv and ruby-build
+brew install rbenv ruby-build
+
+# Add to ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+
+# Install Ruby 3.3.0
+RBENV_VERSION=3.3.0 rbenv install 3.3.0
+rbenv global 3.3.0
+
+# Install CocoaPods
+gem install ffi -v 1.17.3
+gem install cocoapods
+```
 
 ### Apple Developer Account (for iOS Simulator)
 
